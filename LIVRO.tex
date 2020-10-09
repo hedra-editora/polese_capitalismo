@@ -1,9 +1,11 @@
-\documentclass[compontinhos,showtrims,12pt,conselho,spreadimages]{memoir}
+\documentclass[semcabeco,showtrims,10pt,conselho,spreadimages]{memoir}
 
-\usepackage[14x21]{hedraoptions} %% << %%%%%%%%%%%%%%%%
+\usepackage[post]{hedraoptions} 
 \usepackage[baruch]{hedrastyles}
-\usepackage[xetex,chicagofootnotes]{tipografia}
-\usepackage[standart,sempontinhos]{toc}
+\usepackage[xetex,chicagofootnotes,swiftneue]{tipografia}
+
+\usepackage[standart]{toc}
+
 \usepackage{hedraextra}
 \usepackage{penalidades}
 \usepackage{graficos}
@@ -13,79 +15,26 @@
 \usepackage[standart]{aparatos}
 \usepackage{tabelas}
 \usepackage{versos}
-\usepackage{gitrevisioninfo}
 
-%\linespread{1.08}
-\usepackage{commands}
+\trimFrame
 
-\usepackage{setspace}
+\linespread{1.15}
 
-\newcommand{\signature}[1]{{\par\nobreak
-      \smallskip\hfill#1\par
-  }}
+\setcounter{tocdepth}{1}     % amplitude da presença das partes no índice
+\setcounter{secnumdepth}{-2} % amplitude da numeração das partes
 
-\renewcommand{\asterisc}{{\centering\adforn{47}\par}}
-
-\newcommand{\forceindent}{\leavevmode{\parindent=1,5em\indent}}
-
-\setcounter{tocdepth}{0}
-\setcounter{secnumdepth}{-3} 
-
-
+\makeatletter
 
 \makeatletter
 \def\@xfootnote[#1]{%
   \protected@xdef\@thefnmark{#1}%
   \@footnotemark\@footnotetext}
+%\def\footnoterule{\kern-8\p@
+   %\hrule \@width 2in \kern 7.6\p@} % the \hrule is .4pt high
+\skip\footins=10mm\@plus3mm\@minus5mm
 \makeatother
 
-\makeatletter
-\newenvironment{Parskip}{%
-   \par
-   \parskip=0.3\baselineskip \advance\parskip by 0pt plus 2pt
-   \parindent=\z@
-   \def\@listI{\leftmargin\leftmargini
-      \topsep\z@ \parsep\parskip \itemsep\z@}
-   \let\@listi\@listI
-   \@listi
-   \def\@listii{\leftmargin\leftmarginii
-      \labelwidth\leftmarginii\advance\labelwidth-\labelsep
-      \topsep\z@ \parsep\parskip \itemsep\z@}
-   \def\@listiii{\leftmargin\leftmarginiii
-       \labelwidth\leftmarginiii\advance\labelwidth-\labelsep
-       \topsep\z@ \parsep\parskip \itemsep\z@}
-   \partopsep=\z@
-}{\par}
-\makeatother
-
-\newlength\mystoreparindent
-\newenvironment{myparindent}[1]{%
-\setlength{\mystoreparindent}{\the\parindent}
-\setlength{\parindent}{#1}
-}{%
-\setlength{\parindent}{\mystoreparindent}
-}
-
-%------------------------------------------ INCLUIR EPIGRAFE EM PART
-\let\oldafterpartskip\afterpartskip 
-
-\newcommand\partepigraph[3][60pt]{
-\renewcommand{\afterpartskip}{
-\vskip#1
-\epigraph{#2}{#3}
-\vfil}
-}
-\newcommand\removeepigraph{
-  \let\afterpartskip\oldafterpartskip}
-
-%---------------------------------------GERAR BLANK PAGE
-\usepackage{afterpage}
-
-\newcommand\blankpage{%
-    \null
-    \thispagestyle{empty}%
-    \addtocounter{page}{0}%
-    \newpage}
+%\fontsize{10.5pt}{14.2pt}\selectfont
 
 \begin{document}
 
